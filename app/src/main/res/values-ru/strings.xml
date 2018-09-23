@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Remmy</string>
+    <string name="tab_text_1">Контакты</string>
+    <string name="tab_text_2">Группы</string>
+    <string name="tab_text_3">Задачи</string>
+    <string name="action_settings">Настройки</string>
+    <string name="section_format">Привет из вкладки: %1$d</string>
+</resources>
