@@ -1,32 +1,32 @@
 package remmy.ru.myapplication;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
+import android.widget.ArrayAdapter;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+public class TabTasks extends ListFragment {
 
-public class TabTasks extends Fragment {
-
-
-    ListView taskItem;
-    JSONAdapter jSONAdapter;
+    final String[] catNamesArray = new String[] { "Рыжик", "Барсик", "Мурзик",
+            "Мурка", "Васька", "Томасина", "Бобик", "Кристина", "Пушок",
+            "Дымка", "Кузя", "Китти", "Барбос", "Масяня", "Симба" };
+    private ArrayAdapter<String> mAdapter;
+//    private ArrayList<String> catNamesList = new ArrayList<>(Arrays.asList(catNamesArray));
+//    ListView taskItem;
+//    JSONAdapter jSONAdapter;
 
     public TabTasks() {
     }
 
-    /**
-     * Returns a new instance of this fragment for the given section
-     * number.
-     */
+
+
+    private static final String ARG_SECTION_NUMBER = "section_number";
     public static TabTasks newInstance(int sectionNumber) {
         TabTasks fragment = new TabTasks();
         Bundle args = new Bundle();
+        args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
         return fragment;
     }
@@ -34,7 +34,11 @@ public class TabTasks extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_tasks, container, false);
+        View rootView = inflater.inflate(R.layout.tasks, container, false);
+
+        mAdapter = new ArrayAdapter<>(this.getContext(), android.R.layout.simple_list_item_1, catNamesArray);
+        setListAdapter(mAdapter);
+//        getListView().setOnItemLongClickListener((AdapterView.OnItemLongClickListener) this);
 //        taskItem = (ListView) rootView.findViewById(R.id.taskItem);
 //
 //        JSONObject jo = new JSONObject();
